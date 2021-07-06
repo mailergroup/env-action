@@ -126,10 +126,13 @@ try {
     core.exportVariable('CI_SHA_SHORT', getShaShort(sha));
   }
 
-  const pullRequest = github.context?.payload?.pull_request;
+  // eslint-disable-next-line max-len
+  const pullRequest = github.context.payload && github.context.payload.pull_request;
   if (pullRequest) {
-    core.exportVariable('CI_PR_TITLE', pullRequest?.title);
-    core.exportVariable('CI_PR_DESCRIPTION', pullRequest?.body);
+    const prTitle = pullRequest.title;
+    core.exportVariable('CI_PR_TITLE', prTitle);
+    const prBody = pullRequest.body;
+    core.exportVariable('CI_PR_DESCRIPTION', prBody);
   }
 
   core.exportVariable('CI_ACTOR', process.env.GITHUB_ACTOR);
