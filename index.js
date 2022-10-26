@@ -17,6 +17,20 @@ function slugify(inputString) {
       .replace(/^-+/, '') // Trim - from start of text
       .replace(/-+$/, ''); // Trim - from end of text
 }
+/**
+ * Clean special chars and replace them with _ for a given string.
+ * @param {string} inputString
+ * @return {string} The slugified string.
+ */
+function slugifyUnderscore(inputString) {
+  return inputString
+      .toString()
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, '_') // remove invalid chars
+      .replace(/^\s+|\s+$/g, '') // trim
+      .replace(/^-+/, '') // Trim - from start of text
+      .replace(/-+$/, ''); // Trim - from end of text
+}
 
 /**
  * Get the repository owner from the repository string.
@@ -103,6 +117,7 @@ try {
   if (headRef) {
     core.exportVariable('CI_HEAD_REF', headRef);
     core.exportVariable('CI_HEAD_REF_SLUG', slugify(headRef));
+    core.exportVariable('CI_CLEAN_HEAD_REF_SLUG', slugifyUnderscore(headRef));
   }
 
   const baseRef = process.env.GITHUB_BASE_REF;
@@ -141,6 +156,7 @@ try {
 
 module.exports = {
   slugify,
+  slugifyUnderscore,
   getRepositoryOwner,
   getRepositoryName,
   getRefName,

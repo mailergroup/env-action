@@ -1,6 +1,11 @@
 /* eslint max-len: ["error", { "code": 90 }] */
 const {
-  slugify, getRepositoryOwner, getRepositoryName, getRefName, getShaShort,
+  slugify,
+  slugifyUnderscore,
+  getRepositoryOwner,
+  getRepositoryName,
+  getRefName,
+  getShaShort,
 } = require('./index');
 
 test('slugifies text', () => {
@@ -11,6 +16,10 @@ test('slugifies ref name with dash', () => {
   expect(slugify('feature/feature-branch-1')).toEqual('feature-feature-branch-1');
 });
 
+test('slugify replace all special chars with underscores ', () => {
+  expect(slugifyUnderscore('feature/_$%feature-branch-1'))
+      .toEqual('feature____feature_branch_1');
+});
 test('slugifies empty text', () => {
   expect(slugify('')).toEqual('');
 });
