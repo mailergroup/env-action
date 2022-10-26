@@ -26,7 +26,7 @@ function slugifyUnderscore(inputString) {
   return inputString
       .toString()
       .toLowerCase()
-      .replace(/[^a-z0-9 -]/g, '_') // remove invalid chars
+      .replace(/[^a-z0-9]/g, '_') // remove invalid chars
       .replace(/^\s+|\s+$/g, '') // trim
       .replace(/^-+/, '') // Trim - from start of text
       .replace(/-+$/, ''); // Trim - from end of text
