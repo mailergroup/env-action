@@ -68,6 +68,15 @@ function getShaShort(fullSha) {
   return fullSha ? fullSha.substring(0, 8) : null;
 }
 
+/**
+ * Get the short headRef from the full headRef.
+ * @param {string} headRef
+ * @return {string} The short headRef.
+ */
+function getHeadRefShort(headRef) {
+  return headRef ? headRef.substring(0, 60) : null;
+}
+
 try {
   // remotecompany/envs-action
   const repository = process.env.GITHUB_REPOSITORY;
@@ -106,7 +115,7 @@ try {
     core.exportVariable('CI_REF_NAME_SLUG', slugify(refName));
   }
 
-  const headRef = process.env.GITHUB_HEAD_REF;
+  const headRef = getHeadRefShort(process.env.GITHUB_HEAD_REF);
   const branchName = headRef || refName;
 
   if (branchName) {
@@ -161,4 +170,5 @@ module.exports = {
   getRepositoryName,
   getRefName,
   getShaShort,
+  getHeadRefShort,
 };
