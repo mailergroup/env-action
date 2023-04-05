@@ -6,6 +6,7 @@ const {
   getRepositoryName,
   getRefName,
   getShaShort,
+  getHeadRefShort,
 } = require('./index');
 
 test('slugifies text', () => {
@@ -58,4 +59,9 @@ test('gets short SHA', () => {
 
 test('gets short SHA for empty SHA', () => {
   expect(getShaShort(undefined)).toBeFalsy();
+});
+
+test('headRef is 60 characters long', () => {
+  expect(getHeadRefShort('feature/this-is-ne-very-very-very-long-branch-name-for-no-good-reason')).toHaveLength(60);
+  expect(getHeadRefShort('feature/this-is-ne-very-very-very-long-branch-name-for-no-good-reason')).toEqual('feature/this-is-ne-very-very-very-long-branch-name-for-no-go');
 });
