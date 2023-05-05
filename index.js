@@ -78,7 +78,7 @@ function getHeadRefShort(headRef) {
 }
 
 try {
-  // remotecompany/envs-action
+  // mailergroup/envs-action
   const repository = process.env.GITHUB_REPOSITORY;
 
   if (repository) {
@@ -86,7 +86,7 @@ try {
     core.exportVariable('CI_REPOSITORY_SLUG', slugify(repository));
   }
 
-  // remotecompany
+  // mailergroup
   const repositoryOwner = getRepositoryOwner(repository);
   if (repositoryOwner) {
     core.exportVariable('CI_REPOSITORY_OWNER', repositoryOwner);

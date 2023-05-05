@@ -26,7 +26,7 @@ test('slugifies empty text', () => {
 });
 
 test('gets repository owner', () => {
-  expect(getRepositoryOwner('remotecompany/envs-action')).toEqual('remotecompany');
+  expect(getRepositoryOwner('mailergroup/envs-action')).toEqual('mailergroup');
 });
 
 test('gets repository owner for empty repository', () => {
@@ -34,7 +34,7 @@ test('gets repository owner for empty repository', () => {
 });
 
 test('gets repository name from repository', () => {
-  expect(getRepositoryName('remotecompany/envs-action')).toEqual('envs-action');
+  expect(getRepositoryName('mailergroup/envs-action')).toEqual('envs-action');
 });
 
 test('gets repository name for empty repository', () => {
@@ -62,6 +62,8 @@ test('gets short SHA for empty SHA', () => {
 });
 
 test('headRef is 60 characters long', () => {
+  // eslint-disable-next-line max-len
   expect(getHeadRefShort('feature/this-is-ne-very-very-very-long-branch-name-for-no-good-reason')).toHaveLength(60);
+  // eslint-disable-next-line max-len
   expect(getHeadRefShort('feature/this-is-ne-very-very-very-long-branch-name-for-no-good-reason')).toEqual('feature/this-is-ne-very-very-very-long-branch-name-for-no-go');
 });
