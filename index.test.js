@@ -61,9 +61,9 @@ test('gets short SHA for empty SHA', () => {
   expect(getShaShort(undefined)).toBeFalsy();
 });
 
-test('headRef is 60 characters long', () => {
+test('headRef is 52 characters long', () => {
   // eslint-disable-next-line max-len
-  expect(getHeadRefShort('feature/this-is-ne-very-very-very-long-branch-name-for-no-good-reason')).toHaveLength(60);
+  expect(getHeadRefShort('feature/this-is-ne-very-very-very-long-branch-name-for-no-good-reason')).toHaveLength(52);
   // eslint-disable-next-line max-len
-  expect(getHeadRefShort('feature/this-is-ne-very-very-very-long-branch-name-for-no-good-reason')).toEqual('feature/this-is-ne-very-very-very-long-branch-name-for-no-go');
+  expect(getHeadRefShort('feature/this-is-ne-very-very-very-long-branch-name-for-no-good-reason')).toEqual('feature/this-is-ne-very-very-very-long-branch-name-f');
 });
