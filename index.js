@@ -74,7 +74,7 @@ function getShaShort(fullSha) {
  * @return {string} The short headRef.
  */
 function getHeadRefShort(headRef) {
-  return headRef ? headRef.substring(0, 60) : null;
+  return headRef ? headRef.substring(0, 52) : null;
 }
 
 try {
