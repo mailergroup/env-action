@@ -2,7 +2,7 @@ name: "GitHub Expose Environment Variables"
 description: "Expose Environment Variables for GHA"
 author: "Bob Gordon"
 runs:
-  using: "node20"
+  using: "node24"
   main: "dist/index.js"
 branding:
   icon: "circle"
